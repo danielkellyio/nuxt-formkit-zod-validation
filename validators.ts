@@ -6,10 +6,8 @@ export const registerValidator = z.object({
     .email()
     .refine(
       async (email) => {
-        const res = await $fetch("/api/user-already-exists", {
-          method: "GET",
-          query: { email },
-        });
+        if (!email) return true;
+        const res = await $fetch(`/api/user-exists?email=${email}`);
         return !res.exists;
       },
       {

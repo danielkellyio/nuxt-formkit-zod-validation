@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
 
   if (!payload.success) {
     throw createError({
-      data: payload.data,
+      data: payload.error,
       message: "Invalid payload",
       statusCode: 422,
     });

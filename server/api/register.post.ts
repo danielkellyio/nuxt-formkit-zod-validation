@@ -2,11 +2,14 @@ import { readValidatedBody } from "h3";
 import { registerValidator } from "@/validators";
 
 export default defineEventHandler(async (event) => {
-  const payload = await readValidatedBody(event, registerValidator.safeParse);
+  const payload = await readValidatedBody(
+    event,
+    registerValidator.safeParseAsync
+  );
 
   if (!payload.success) {
     throw createError({
-      data: payload.data,
+      data: payload.error,
       message: "Invalid payload",
       statusCode: 422,
     });

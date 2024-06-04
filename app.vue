@@ -19,7 +19,7 @@ const [zodPlugin, submitHandler] = createZodPlugin(
 );
 </script>
 <template>
-  <div class="dark">
+  <div>
     <FormKit type="form" :plugins="[zodPlugin]" @submit="submitHandler">
       <FormKit
         type="text"

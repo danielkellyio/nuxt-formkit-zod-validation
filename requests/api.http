@@ -1,0 +1,28 @@
+## You can test the API endpoints diretly from VS Code with the REST Client extension.
+## https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+
+### Example of a GET request to check if a user already exists
+## test@dc.com does NOT already exist
+GET http://localhost:3000/api/user-exists?email=test@dc.com
+
+
+
+### Example of a GET request to check if a user already exists
+## batman@dc.com does NOT already exist
+GET http://localhost:3000/api/user-exists?email=batman@dc.com
+
+
+### Example of a GET request to check if a user already exists
+## with an invalid payload (we misnamed the email parameter as user)
+GET http://localhost:3000/api/user-exists?user=batman@dc.com
+
+### Example of a POST request to register a new user
+## By then end of the exercise this should return a 200 OK
+## only when a valid email, password, and age are provided
+POST http://localhost:3000/api/register
+
+{
+    "email": "valid-email@test.com",
+    "password": "pass12345",
+    "age": "100"
+}
