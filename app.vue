@@ -1,26 +1,22 @@
 <script setup lang="ts">
 import { createZodPlugin } from "@/utils/index";
 import { registerValidator } from "@/validators";
+
 const form = ref({
   email: "",
   password: "",
   age: 0,
 });
 
-const [zodPlugin, submitHandler] = createZodPlugin(
-  registerValidator,
-  async (formData) => {
-    // fake submit handler, but this is where you
-    // do something with your valid data.
-    await new Promise((r) => setTimeout(r, 2000));
-    alert("Form was submitted!");
-    console.log(formData);
-  }
-);
+// TODO: use the validator to validate the form client side
+
+function submitHandler(formData: typeof form.value) {
+  console.log(formData);
+}
 </script>
 <template>
   <div>
-    <FormKit type="form" :plugins="[zodPlugin]" @submit="submitHandler">
+    <FormKit type="form" @submit="submitHandler">
       <FormKit
         type="text"
         label="Email"
